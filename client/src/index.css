@@ -1,0 +1,42 @@
+body {
+    font-family: 'Poiret One', cursive;
+}
+
+.start-title {
+    color: #FFDAB9
+}
+
+.start-blockquote {
+    color: #9370DB
+}
+
+.custom-button {
+    min-width: 150px
+}
+
+.bi {
+    position: absolute;
+    top: 20%;
+    right: 2%;
+}
+
+.has-validation {
+    position: relative;
+}
+
+.auth-title {
+    color: #FFDAB9;
+    font-size: 40px;
+}
+
+.form-label {
+    color: #9370DB;
+}
+
+.button-wrapper {
+    text-align: center;
+}
+
+.my-shadow {
+    box-shadow: 5px 5px 10px 2px rgba(147, 112, 219, 1);
+}
