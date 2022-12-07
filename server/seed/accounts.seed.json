@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Наличка",
+    "currency": "RUB"
+  },
+  {
+    "name": "Карта",
+    "currency": "RUB"
+  }
+]

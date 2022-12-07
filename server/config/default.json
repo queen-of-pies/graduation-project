@@ -1,4 +1,4 @@
 {
   "port": 8181,
-  "mongoUri": "mongodb://root:123@localhost:27017/"
+  "mongoUri": "mongodb://root:123@localhost:27017/graduation-project?authSource=admin"
 }
