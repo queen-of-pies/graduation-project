@@ -1,4 +1,7 @@
 {
   "port": 8181,
-  "mongoUri": "mongodb://root:123@localhost:27017/graduation-project?authSource=admin"
+  "mongoUri": "mongodb://root:123@localhost:27017/",
+  "accessSecret": "super secret",
+  "refreshSecret": "super refresh secret"
 }
+

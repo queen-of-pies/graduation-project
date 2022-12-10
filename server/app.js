@@ -15,11 +15,14 @@ const PORT = config.get("port") ?? 8181
 
 async function start() {
     try {
-        mongoose.set('strictQuery', false);
+        mongoose.set('strictQuery', true);
+        const options = {
+            dbName: "graduation-project"
+        }
         mongoose.connection.once("open", () => {
             initDatabase()
         })
-        await mongoose.connect(config.get("mongoUri"))
+        await mongoose.connect(config.get("mongoUri"), options)
         console.log(chalk.green(`MongoDB connected`))
 
         app.listen(PORT, () => console.log(chalk.green(`Server has been started on port ${PORT}`)))
