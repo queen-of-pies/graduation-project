@@ -1,9 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css';
-import Switch from 'react-router-dom/es/Switch';
-import Route from 'react-router-dom/es/Route';
-import Redirect from 'react-router-dom/es/Redirect';
+import {Switch, Route,Redirect} from 'react-router-dom';
 import Main from './layouts/main';
 import AuthPage from './layouts/authPage';
 import RegisterPage from './layouts/registerPage';
@@ -12,9 +10,13 @@ import ExpensesPage from './layouts/expensesPage';
 import HistoryPage from './layouts/historyPage';
 import IncomingPage from './layouts/incomingPage';
 import AccountsPage from './layouts/accountsPage';
+import {useSelector} from "react-redux";
+import {getIsLoggedIn} from "./store/users";
+import {ToastContainer} from "react-toastify";
 
 function App() {
-    const isAuthorized = false;
+    const isAuthorized = useSelector(getIsLoggedIn());
+    console.log(isAuthorized)
     return (
         <div className="container">
             <Switch>
@@ -32,6 +34,7 @@ function App() {
                 <Route path="/404" component={NotFound} />
                 <Redirect to="/404" />
             </Switch>
+            <ToastContainer />
         </div>
     );
 }

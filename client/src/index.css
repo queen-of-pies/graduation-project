@@ -11,7 +11,8 @@ body {
 }
 
 .custom-button {
-    min-width: 150px
+    min-width: 150px;
+    cursor: pointer;
 }
 
 .bi {
@@ -27,6 +28,11 @@ body {
 .auth-title {
     color: #FFDAB9;
     font-size: 40px;
+}
+.auth-subtitle {
+    color: #9370DB;
+    font-size: 20px;
+    text-align: center;
 }
 
 .form-label {

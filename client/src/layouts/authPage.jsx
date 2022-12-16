@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import TextField from '../components/textField';
 import validator from '../utils/validator';
 import Button from '../components/button';
+import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {signIn} from "../store/users";
 
 const AuthPage = () => {
-    const [data, setData] = useState({ email: '', password: '' });
+    const [data, setData] = useState({email: '', password: ''});
     const [errors, setErrors] = useState({});
-
-    useEffect(() => {
-        validate();
-    }, [data]);
+    const dispatch = useDispatch()
 
     const validateConfig = {
         email: {
-            isRequired: { message: `Поле email обязательно к заполнению.` },
-            isEmail: { message: 'Введеный email некорректный' }
+            isRequired: {message: `Поле email обязательно к заполнению.`},
+            isEmail: {message: 'Введеный email некорректный'}
         },
         password: {
-            isRequired: { message: `Поле password обязательно к заполнению.` },
+            isRequired: {message: `Поле password обязательно к заполнению.`},
             isCapitalSymbol: {
                 message: `Поле password должно содержать хотя бы одну заглавную букву.`
             },
@@ -37,9 +37,13 @@ const AuthPage = () => {
         return Object.keys(errors).length === 0;
     };
 
+    useEffect(() => {
+        validate();
+    }, [data]);
+
     const isValid = Object.keys(errors).length === 0;
 
-    const handleChange = ({ target }) => {
+    const handleChange = ({target}) => {
         setData((prevState) => ({
             ...prevState,
             [target.name]: target.value
@@ -50,7 +54,7 @@ const AuthPage = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        console.log(data);
+        dispatch(signIn(data))
     };
 
     return (
@@ -75,9 +79,13 @@ const AuthPage = () => {
                             error={errors.password}
                         />
                         <div className="button-wrapper">
-                            <Button title="Войти" disabled={!isValid} />
+                            <Button title="Войти" disabled={!isValid}/>
                         </div>
+
                     </form>
+                    <Link to="/register">
+                        <p className="auth-subtitle">Еще нет аккаунта? Зарегистрируйся!</p>
+                    </Link>
                 </div>
             </div>
         </div>
