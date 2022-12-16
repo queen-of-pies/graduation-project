@@ -16,7 +16,7 @@ import {ToastContainer} from "react-toastify";
 
 function App() {
     const isAuthorized = useSelector(getIsLoggedIn());
-    console.log(isAuthorized)
+
     return (
         <div className="container">
             <Switch>
