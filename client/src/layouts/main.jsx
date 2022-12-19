@@ -1,9 +1,9 @@
 import React from 'react';
-import Dashboard from './dashboard';
 import StartPage from './startPage';
+import TransactionsPage from "./transactionsPage";
 
 const Main = ({ isAuthorized }) => {
-    return isAuthorized ? <Dashboard /> : <StartPage />;
+    return isAuthorized ? <TransactionsPage /> : <StartPage />;
 };
 
 export default Main;

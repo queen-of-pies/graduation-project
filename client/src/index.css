@@ -1,5 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Poiret One', cursive;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    padding: 10px;
 }
 
 .start-title {
@@ -10,10 +23,6 @@ body {
     color: #9370DB
 }
 
-.custom-button {
-    min-width: 150px;
-    cursor: pointer;
-}
 
 .bi {
     position: absolute;
@@ -23,12 +32,14 @@ body {
 
 .has-validation {
     position: relative;
+    min-width: 200px;
 }
 
 .auth-title {
     color: #FFDAB9;
     font-size: 40px;
 }
+
 .auth-subtitle {
     color: #9370DB;
     font-size: 20px;
@@ -45,4 +56,133 @@ body {
 
 .my-shadow {
     box-shadow: 5px 5px 10px 2px rgba(147, 112, 219, 1);
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.profile {
+    padding: 50px;
+    border: 1px solid #9370DB;
+}
+
+.profile-form, .transaction-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    padding: 5px;
+    margin-bottom: 10px;
+    color: #FFDAB9;
+    border: 1px solid #9370DB;
+}
+
+.navbar {
+    background-color: #FFDAB9;
+}
+
+.nav-profile {
+    color: #9370DB;
+}
+
+.nav-link {
+    color: #9370DB;
+}
+
+/* AccountPage*/
+.account-title {
+    color: #9370DB;
+}
+
+.accounts-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.accounts-list {
+    list-style: none;
+}
+
+.accounts-item {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #9370DB;
+    max-width: 350px;
+    margin-bottom: 30px;
+}
+
+.accounts-info {
+    margin-right: 60px;
+    color: #9370DB;
+    font-size: 30px
+
+}
+
+.accounts-info-last {
+    margin-right: 0;
+}
+
+/* New transaction*/
+.count-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.transaction-title {
+    color: #9370DB;
+    text-align: center;
+}
+
+.transaction-description {
+    border: 1px solid #9370DB;
+    border-radius: 5px;
+    color: #9370DB;
+    padding: 5px;
+}
+
+.account-val {
+    color: #9370DB;
+}
+
+/* Input */
+.custom-input {
+    border: 1px solid #9370DB;
+    border-radius: 5px;
+    height: 38px;
+    padding-left: 10px;
+    color: #9370DB;
+    margin-right: 5px;
+}
+
+
+/* Select */
+.custom-select {
+    margin-bottom: 10px;
+    color: #9370DB;
+    border: 1px solid #9370DB;
+}
+
+/* Button */
+.custom-button {
+    min-width: 150px;
+    max-width: 200px;
+    cursor: pointer;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.balance-field {
+    display: flex;
+    align-items: center;
+}
+
+.balance-field span {
+    margin-left: 15px;
 }

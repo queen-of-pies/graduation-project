@@ -72,7 +72,7 @@ router.post("/signInWithPassword", [check("email", "Email некорректны
         }
         const tokens = tokenService.generate({_id: existingUser._id})
         await tokenService.save(existingUser._id, tokens.refreshToken)
-        res.status(201).send({...tokens, userId: existingUser._id})
+        res.status(201).send({...tokens, userId: existingUser._id, userName: existingUser.name, email: existingUser.email})
     } catch (e) {
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже."

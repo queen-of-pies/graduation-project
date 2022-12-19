@@ -5,7 +5,9 @@ export default function validator(data, config) {
         let statusValidate;
         switch (method) {
             case "isRequired":
-                statusValidate = data.trim() === "";
+                if (typeof data === 'string') {
+                    statusValidate = data.trim() === "";
+                }
                 break;
             case "isEmail": {
                 const emailRegExp = /^\S+@\S+\.\S+$/g;
@@ -25,6 +27,10 @@ export default function validator(data, config) {
             case "min": {
                 statusValidate = data.length < config.value;
                 break;
+            }
+            case 'positive': {
+                statusValidate = data <= 0;
+                break
             }
             default:
                 break;

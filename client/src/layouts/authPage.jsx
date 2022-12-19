@@ -5,11 +5,14 @@ import Button from '../components/button';
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signIn} from "../store/users";
+import history from "../utils/history";
 
-const AuthPage = () => {
+
+const AuthPage = (props) => {
     const [data, setData] = useState({email: '', password: ''});
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch()
+    console.log("props", props)
 
     const validateConfig = {
         email: {
@@ -44,9 +47,10 @@ const AuthPage = () => {
     const isValid = Object.keys(errors).length === 0;
 
     const handleChange = ({target}) => {
+        const val = target.name === 'accountId' ? target.value._id : target.value.name
         setData((prevState) => ({
             ...prevState,
-            [target.name]: target.value
+            [target.name]: val
         }));
     };
 
@@ -54,7 +58,10 @@ const AuthPage = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        dispatch(signIn(data))
+        const redirect = history.location.state
+            ? history.location.state.from.pathname
+            : "/";
+        dispatch(signIn({payload: data, redirect}))
     };
 
     return (

@@ -56,9 +56,10 @@ const RegisterPage = () => {
     const isValid = Object.keys(errors).length === 0;
 
     const handleChange = ({ target }) => {
+        const val = target.name === 'accountId' ? target.value._id : target.value.name
         setData((prevState) => ({
             ...prevState,
-            [target.name]: target.value
+            [target.name]: val
         }));
     };
 

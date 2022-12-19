@@ -9,6 +9,10 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
         setShowPassword((prevState) => !prevState);
     };
 
+    const handleChange = ({ target }) => {
+        onChange({ target: { name, value: {name: target.value} } });
+    };
+
     return (
         <div className="mb-4">
             <label className="form-label" htmlFor={name}>{label}</label>
@@ -17,7 +21,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
                     type={showPassword ? 'text' : type}
                     id={name}
                     value={value}
-                    onChange={onChange}
+                    onChange={handleChange}
                     onBlur={()=>setTouched(true)}
                     name={name}
                     className={`form-control ${error && touched && 'is-invalid'}`}
