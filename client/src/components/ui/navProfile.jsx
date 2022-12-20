@@ -19,7 +19,7 @@ const NavProfile = () => {
             <div className="btn dropdown-toggle d-flex align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div className="me-2 nav-profile">{currentUser.userName}</div>
             </div>
-            <div className={"w-100 dropdown-menu" + (isOpen ? "show" : "")}>
+            <div className={"w-100 dropdown-menu" + (isOpen ? " show" : "")}>
                 <Link
                     className="dropdown-item nav-profile"
                     to={`/profile`}
