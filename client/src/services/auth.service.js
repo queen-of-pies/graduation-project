@@ -1,6 +1,7 @@
 import axios from "axios";
 import localStorageService from "./localStorage.service";
 import config from "../config.json";
+import {toast} from "react-toastify";
 
 const httpAuth = axios.create({
     baseURL: config.apiEndpoint + "/auth/",
@@ -13,12 +14,16 @@ const authService = {
         return data;
     },
     login: async ({ email, password }) => {
-        const { data } = await httpAuth.post("signInWithPassword", {
-            email,
-            password,
-            returnSecureToken: true
-        });
-        return data;
+        try {
+            const { data } = await httpAuth.post("signInWithPassword", {
+                email,
+                password,
+                returnSecureToken: true
+            });
+            return data;
+        } catch (e) {
+            toast('Ошибка авторизации')
+        }
     },
     refresh: async () => {
         const { data } = await httpAuth.post("token", {

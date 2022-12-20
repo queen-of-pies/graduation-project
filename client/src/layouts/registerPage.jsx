@@ -69,7 +69,7 @@ const RegisterPage = () => {
         const isValid = validate();
         if (!isValid) return;
         dispatch(signUp(data))
-        history.push("/login")
+        history.push("/")
     };
 
     return (

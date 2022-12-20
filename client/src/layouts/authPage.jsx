@@ -7,7 +7,6 @@ import {useDispatch} from "react-redux";
 import {signIn} from "../store/users";
 import history from "../utils/history";
 
-
 const AuthPage = () => {
     const [data, setData] = useState({email: '', password: ''});
     const [errors, setErrors] = useState({});

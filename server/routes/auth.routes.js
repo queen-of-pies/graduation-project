@@ -32,7 +32,7 @@ router.post("/signUp", [check("email", "Некорректный email").isEmail
         })
         const tokens = tokenService.generate({_id: newUser._id})
         await tokenService.save(newUser._id, tokens.refreshToken)
-        res.status(201).send({...tokens, userId: newUser._id})
+        res.status(201).send({...tokens, userId: newUser._id, userName: newUser.name, email: newUser.email})
     } catch (e) {
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже."

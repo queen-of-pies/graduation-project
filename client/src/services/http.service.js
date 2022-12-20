@@ -54,6 +54,7 @@ const transformData = (data) => {
 };
 
 http.interceptors.response.use((res) => {
+        console.log('RES: ', res)
         if (configFile.isFirebase) {
             res.data = { content: transformData(res.data) };
         }
@@ -64,7 +65,6 @@ http.interceptors.response.use((res) => {
     function (error) {
         const expectedError = error.response && error.response.status >= 400 && error.response.status < 500;
         if (!expectedError) {
-            console.log("!!",error);
             toast("Unexpected error");
         } else {
             return Promise.reject(error);
