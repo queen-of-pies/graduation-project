@@ -58,7 +58,6 @@ const AccountForm = ({initState, mode}) => {
 
     const currencyValue = currencyTypes.find(type=> type.name===data.currency)
 
-
     return (
         <div className="container mt-5">
             <div className="row">
@@ -82,11 +81,12 @@ const AccountForm = ({initState, mode}) => {
                             placeholder="Введите сумму"
                         />
                         <SelectField
-                            label={"Выберите валюту счета"}
+                            label={"Валюта счета"}
+                            optionLabel={"Выберите валюту счета"}
                             options={currencyTypes}
                             onChange={handleChange}
                             name="currency"
-                            value={currencyValue}
+                            value={currencyValue || ""}
                             error={errors.currency}
                         />
                         <div className="button-wrapper">

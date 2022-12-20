@@ -54,7 +54,6 @@ const transformData = (data) => {
 };
 
 http.interceptors.response.use((res) => {
-        console.log('RES: ', res)
         if (configFile.isFirebase) {
             res.data = { content: transformData(res.data) };
         }

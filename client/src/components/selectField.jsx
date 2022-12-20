@@ -1,14 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 
-const SelectField = ({ label,optionLabel, options, onChange, name, value, error }) => {
+const SelectField = ({label, optionLabel, options, onChange, name, value, error}) => {
+    const [touched, setTouched] = useState(false);
     const optionsArray =
         !Array.isArray(options) && typeof options === "object"
             ? Object.keys(options).map((option) => options[option])
             : options;
 
-    const handleChange = ({ target }) => {
+    const handleChange = ({target}) => {
         const item = optionsArray.find((option) => option._id.toString() === target.value);
-        onChange({ target: { name, value: item } });
+        onChange({target: {name, value: item}});
     };
 
     return (
@@ -18,7 +19,8 @@ const SelectField = ({ label,optionLabel, options, onChange, name, value, error 
             </label>
             <select
                 onChange={handleChange}
-                className={`form-select ${error && "is-invalid"}`}
+                onBlur={() => setTouched(true)}
+                className={`form-select ${error && touched && "is-invalid"}`}
                 id={name}
                 name={name}
                 defaultValue={typeof value === "object" ? value._id : value}
@@ -33,7 +35,7 @@ const SelectField = ({ label,optionLabel, options, onChange, name, value, error 
                         </option>
                     ))}
             </select>
-            {error && <div className="invalid-feedback">{error}</div>}
+            {error && touched && <div className="invalid-feedback">{error}</div>}
         </div>
     );
 };
