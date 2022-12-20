@@ -5,8 +5,6 @@ import Button from "../components/button";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signUp} from "../store/users";
-import history from "../utils/history";
-
 
 const RegisterPage = () => {
     const [data, setData] = useState({
@@ -69,7 +67,6 @@ const RegisterPage = () => {
         const isValid = validate();
         if (!isValid) return;
         dispatch(signUp(data))
-        history.push("/")
     };
 
     return (

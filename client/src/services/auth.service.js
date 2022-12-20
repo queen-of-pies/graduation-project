@@ -10,8 +10,14 @@ const httpAuth = axios.create({
 
 const authService = {
     register: async (payload) => {
-        const { data } = await httpAuth.post("signUp", payload);
-        return data;
+        try {
+            const { data } = await httpAuth.post("signUp", payload);
+            return data;
+        } catch (e) {
+            if (e.response.data.error.message === 'EMAIL_EXISTS') {
+                toast('Пользователь с таким email уже существует')
+            }
+        }
     },
     login: async ({ email, password }) => {
         try {

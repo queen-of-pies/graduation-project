@@ -3,6 +3,7 @@ import usersService from "../services/users.service";
 import authService from "../services/auth.service";
 import localStorageService from "../services/localStorage.service";
 import history from "../utils/history";
+import {toast} from "react-toastify";
 
 const initialState = localStorageService.getAccessToken()
     ? {
@@ -90,6 +91,7 @@ export const signUp =
                     userName: data.userName,
                     userEmail: data.email
                 }));
+                history.push("/")
             } catch (error) {
                 dispatch(authRequestFailed(error.message));
             }
