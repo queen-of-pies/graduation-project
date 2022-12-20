@@ -1,5 +1,5 @@
 import React from "react";
-import AccountForm from "../components/accountForm";
+import AccountForm from "../accountForm";
 
 const NewAccount = () => {
     const initState = {

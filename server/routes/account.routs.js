@@ -30,7 +30,6 @@ router.post("/", auth, async (req, res) => {
         await user.save()
         res.status(200).send(newAccount)
     } catch (e) {
-        console.log(e)
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже."
         })
@@ -43,7 +42,6 @@ router.put("/", auth, async (req, res) => {
 
         res.status(200).send(account)
     } catch (e) {
-        console.log(e)
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже."
         })

@@ -5,8 +5,6 @@ const chalk = require("chalk")
 const routes = require("./routes")
 const cors = require("cors")
 
-// const initDatabase = require("./startUp/initDatabase")
-
 const app = express()
 
 app.use(express.json())
@@ -22,9 +20,6 @@ async function start() {
         const options = {
             dbName: "graduation-project"
         }
-        // mongoose.connection.once("open", () => {
-        //     initDatabase()
-        // })
         await mongoose.connect(config.get("mongoUri"), options)
         console.log(chalk.green(`MongoDB connected`))
 

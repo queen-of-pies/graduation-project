@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Button from "../button";
 import {useDispatch, useSelector} from "react-redux";
 import {getAccountsList} from "../../store/accounts";
-import transactionTypes from "../../mock/transactionTypes.json"
+import transactionTypes from "../../types/transactionTypes.json"
 import validator from "../../utils/validator";
 import SelectField from "../selectField";
 import SimpleTextField from "../simpleTextField";

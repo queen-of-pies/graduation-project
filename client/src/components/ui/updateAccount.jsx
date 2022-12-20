@@ -1,7 +1,7 @@
 import React from "react";
-import AccountForm from "../components/accountForm";
+import AccountForm from "../accountForm";
 import {useParams} from "react-router-dom";
-import {getAccountById} from "../store/accounts";
+import {getAccountById} from "../../store/accounts";
 import {useSelector} from "react-redux";
 
 const UpdateAccount = () => {

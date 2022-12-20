@@ -4,7 +4,7 @@ import validator from "../utils/validator";
 import TextField from "../components/textField";
 import Button from "../components/button";
 import SelectField from "../components/selectField";
-import currencyTypes from "../mock/currencyTypes.json"
+import currencyTypes from "../types/currencyTypes.json"
 import {createAccount, updateAccount} from "../store/accounts";
 import history from "../utils/history";
 

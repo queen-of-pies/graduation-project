@@ -42,7 +42,6 @@ router.post("/", auth, async (req, res) => {
 
         res.status(200).send(newTransactionWithAccountId)
     } catch (e) {
-        console.log(e)
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже."
         })
@@ -64,7 +63,6 @@ router.delete("/:transactionId", auth, async (req, res) => {
         await tx.remove()
         res.status(200).send("deleted")
     } catch (e) {
-        console.log(e)
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже."
         })
