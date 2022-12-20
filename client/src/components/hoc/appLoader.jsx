@@ -3,18 +3,22 @@ import {getAccountsLoadingStatus, loadAccountsList} from "../../store/accounts";
 import {getTransactionsLoadingStatus, loadTransactionsList} from "../../store/transactions";
 import React, {useEffect} from "react";
 import Loader from "../loader";
+import {getIsLoggedIn} from "../../store/users";
 
 const AppLoader = ({children}) => {
     const dispatch = useDispatch();
     const accountsLoading = useSelector(getAccountsLoadingStatus())
     const txLoading = useSelector(getTransactionsLoadingStatus())
+    const isLoggedIn = useSelector(getIsLoggedIn())
 
     useEffect(() => {
-        dispatch(loadAccountsList())
-        dispatch(loadTransactionsList())
-    }, [])
+        if (isLoggedIn) {
+            dispatch(loadAccountsList())
+            dispatch(loadTransactionsList())
+        }
+    }, [dispatch, isLoggedIn])
 
-    if (accountsLoading || txLoading) {
+    if (isLoggedIn && (accountsLoading || txLoading)) {
         return <Loader/>
     }
 

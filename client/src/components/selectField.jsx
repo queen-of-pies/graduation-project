@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const SelectField = ({ label,optionLabel, options, onChange, name, value, error }) => {
     const optionsArray =

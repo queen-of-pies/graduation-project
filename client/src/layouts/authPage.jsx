@@ -8,7 +8,7 @@ import {signIn} from "../store/users";
 import history from "../utils/history";
 
 
-const AuthPage = (props) => {
+const AuthPage = () => {
     const [data, setData] = useState({email: '', password: ''});
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch()
