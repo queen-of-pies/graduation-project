@@ -12,7 +12,6 @@ const accountsService = {
         return data.content;
     },
     update: async (payload) => {
-        console.log(payload)
         const { data } = await httpService.put(url, payload);
         return data.content;
     },

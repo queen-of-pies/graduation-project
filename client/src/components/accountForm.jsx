@@ -6,6 +6,7 @@ import Button from "../components/button";
 import SelectField from "../components/selectField";
 import currencyTypes from "../mock/currencyTypes.json"
 import {createAccount, updateAccount} from "../store/accounts";
+import history from "../utils/history";
 
 const AccountForm = ({initState, mode}) => {
     const [data, setData] = useState(initState);
@@ -55,6 +56,9 @@ const AccountForm = ({initState, mode}) => {
         }
     };
 
+    const currencyValue = currencyTypes.find(type=> type.name===data.currency)
+
+
     return (
         <div className="container mt-5">
             <div className="row">
@@ -75,17 +79,19 @@ const AccountForm = ({initState, mode}) => {
                             name="balance"
                             value={data.balance.toString()}
                             error={errors.balance}
+                            placeholder="Введите сумму"
                         />
                         <SelectField
                             label={"Выберите валюту счета"}
                             options={currencyTypes}
                             onChange={handleChange}
                             name="currency"
-                            value={data.currency}
+                            value={currencyValue}
                             error={errors.currency}
                         />
                         <div className="button-wrapper">
                             <Button title={mode === 'new' ? 'Добавить' : 'Изменить'} disabled={!isValid}/>
+                            <Button title="Отмена" type="button" onClick={() => history.push("/accounts")} />
                         </div>
                     </form>
                 </div>

@@ -12,7 +12,6 @@ const AuthPage = (props) => {
     const [data, setData] = useState({email: '', password: ''});
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch()
-    console.log("props", props)
 
     const validateConfig = {
         email: {

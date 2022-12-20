@@ -25,7 +25,7 @@ const AccountsPage = () => {
                             <td>{account.name}</td>
                             <td>{account.balance}</td>
                             <td>{account.currency}</td>
-                            <td>
+                            <td className="last-column">
                                 <button type="button" className="btn btn-success" onClick={() => history.push(`/updateAccount/${account._id}`)} >Изменить</button></td>
                         </tr>
                     )}

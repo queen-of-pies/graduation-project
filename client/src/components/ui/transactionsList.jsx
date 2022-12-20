@@ -17,6 +17,7 @@ const TransactionList = () => {
             <tr>
                 <th>Дата</th>
                 <th>Сумма</th>
+                <th>Валюта</th>
                 <th>Тип</th>
                 <th>Счет</th>
                 <th>Комментарий</th>
@@ -27,6 +28,7 @@ const TransactionList = () => {
             {transactionsList.map(tx => <tr key = {tx._id}>
                     <td>{new Date(tx.txDate.toString()).toLocaleString()}</td>
                     <td>{tx.amount}</td>
+                    <td>{tx.accountId.currency}</td>
                     <td>{tx.type}</td>
                     <td>{tx.accountId.name}</td>
                     <td>{tx.description}</td>

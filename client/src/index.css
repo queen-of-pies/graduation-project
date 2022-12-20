@@ -76,8 +76,9 @@ body {
 .form-input {
     padding: 5px;
     margin-bottom: 10px;
-    color: #FFDAB9;
+    color: black;
     border: 1px solid #9370DB;
+    border-radius: 5px;
 }
 
 .navbar {
@@ -185,4 +186,25 @@ body {
 
 .balance-field span {
     margin-left: 15px;
+}
+
+.form-select, .form-control {
+    border: 1px solid #9370DB;
+}
+
+.last-column{
+    text-align: end;
+}
+
+::-webkit-input-placeholder {
+    color:    black;
+}
+:-moz-placeholder {
+    color:    black;
+}
+::-moz-placeholder {
+    color:    black;
+}
+:-ms-input-placeholder {
+    color:    black;
 }

@@ -1,9 +1,9 @@
 import {useBalance} from "../../hooks/useBalance";
 
 const Balances = () => {
-    const {balance} = useBalance()
+    const {balances} = useBalance()
   return <div className='nav-link'>
-      RUB: {balance}, USD: 230, EUR: 2435
+      RUB: {balances.RUB} ~ USD: {balances.USD} ~ EUR: {balances.EUR}
   </div>
 }
 

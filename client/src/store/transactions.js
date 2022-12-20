@@ -2,6 +2,11 @@ import {createAction, createSlice} from "@reduxjs/toolkit";
 import transactionsService from "../services/transactions.service";
 import {loadAccountsList} from "./accounts";
 
+const sortByDateAsc = (a, b) => {
+    const a_ = Date.parse(a.txDate);
+    const b_ = Date.parse(b.txDate);
+    return a_ < b_ ? 1 : -1;
+};
 
 const transactionsSlice = createSlice({
     name: "transactions",
@@ -24,12 +29,12 @@ const transactionsSlice = createSlice({
         },
         transactionCreated: (state, action) => {
             state.entities.push(action.payload)
+            state.entities = state.entities.sort(sortByDateAsc)
         },
         transactionCreateRequestedFailed: (state, action) => {
             state.errors = action.payload;
         },
         transactionDeleted: (state, action) => {
-            console.log("action", action.payload)
             state.entities = state.entities.filter(tx => tx._id !== action.payload)
         },
         transactionDeleteRequestedFailed: (state, action) => {
@@ -78,9 +83,9 @@ export const deleteTransaction = (payload) => async dispatch => {
     dispatch(transactionDeleteRequested())
     try {
         const data = await transactionsService.delete(payload)
-        console.log("data", data)
         if (data === "deleted") {
             dispatch(transactionDeleted(payload))
+            dispatch(loadAccountsList())
         }
     } catch (error) {
         dispatch(transactionDeleteRequestedFailed())

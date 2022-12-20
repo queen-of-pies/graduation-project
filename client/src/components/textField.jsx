@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const TextField = ({ label, type, name, value, onChange, error }) => {
+const TextField = ({ label,placeholder, type, name, value, onChange, error }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [touched, setTouched] = useState(false);
 
@@ -24,6 +24,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
                     onChange={handleChange}
                     onBlur={()=>setTouched(true)}
                     name={name}
+                    placeholder={placeholder}
                     className={`form-control ${error && touched && 'is-invalid'}`}
                 />
                 {type === 'password' && !error && (

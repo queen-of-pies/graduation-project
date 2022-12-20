@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SimpleTextField = ({ label, type, name, value, onChange, error, maxAmount }) => {
+const SimpleTextField = ({ label,placeholder, type, name, value, onChange, error, maxAmount }) => {
     const [touched, setTouched] = useState(false);
 
     const handleChange = (e) => {
@@ -21,6 +21,7 @@ const SimpleTextField = ({ label, type, name, value, onChange, error, maxAmount 
                     className={`form-control ${error && touched && 'is-invalid'}`}
                     max={maxAmount}
                     min={0}
+                    placeholder={placeholder}
                 />
 
                 {error && touched && <div className="invalid-feedback">{error}</div>}

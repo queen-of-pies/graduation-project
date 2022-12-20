@@ -16,7 +16,7 @@ const NewTransaction = ({resetForm}) => {
     const [balance, setBalance] = useState(0)
     const initialState = {
         accountId: "",
-        amount: 0,
+        amount: "",
         type: "",
         description: ""
     }
@@ -93,7 +93,8 @@ const NewTransaction = ({resetForm}) => {
         <h3 className="transaction-title mb-4">Добавить транзакцию</h3>
         <form className="transaction-form">
             <SelectField
-                label="Выберите счет"
+                optionLabel="Выберите счет"
+                label="Счет"
                 options={accounts}
                 onChange={handleChange}
                 name="accountId"
@@ -101,7 +102,8 @@ const NewTransaction = ({resetForm}) => {
                 error={errors.accountId}/>
 
             <SelectField
-                label="Выберите тип транзакции"
+                optionLabel="Выберите тип транзакции"
+                label="Тип транзакции"
                 options={transactionTypes}
                 onChange={handleChange}
                 name="type"
@@ -116,13 +118,14 @@ const NewTransaction = ({resetForm}) => {
                         onChange={handleChange}
                         name="amount"
                         error={errors.amount}
+                        placeholder="Введите сумму"
                         maxAmount={data.type === "Расход" ? balance : 9999999999999999}
                     />
 
                     <span>Баланс: {balance} {currency}</span>
                 </div>
             </div>
-            <textarea className="transaction-description" value={data.description} onChange={setDescription}/>
+            <textarea className="transaction-description" value={data.description} onChange={setDescription} placeholder="Комментарий"/>
             <div className="button-wrapper">
                 <Button title="Добавить" disabled={!isValid} onClick={handleSubmit}/>
                 <Button title="Отмена" onClick={handleCancel}/>

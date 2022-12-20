@@ -31,6 +31,7 @@ router.get("/", auth, async (req, res) => {
 router.post("/", auth, async (req, res) => {
     try {
         const newTransaction = await Tx.create(req.body)
+        const newTransactionWithAccountId = await Tx.findById(newTransaction._id).populate("accountId")
         const account = await Account.findById(newTransaction.accountId);
         if (newTransaction.type === 'Расход') {
             account.balance -= +newTransaction.amount
@@ -39,7 +40,7 @@ router.post("/", auth, async (req, res) => {
         }
         await account.save()
 
-        res.status(200).send(newTransaction)
+        res.status(200).send(newTransactionWithAccountId)
     } catch (e) {
         console.log(e)
         res.status(500).json({
